@@ -127,28 +127,32 @@ class LinkIcon extends StatelessWidget {
 }
 
 class LinkIconsRow extends StatelessWidget {
-  const LinkIconsRow({Key? key}) : super(key: key);
+  final List<Map<String,String>> links = [
+    {
+      'link': 'https://twitter.com/',
+      'iconPath': 'assets/twitter.svg',
+    },
+    {
+      'link': 'https://github.com/Sigumaa',
+      'iconPath': 'assets/github.svg',
+    },
+    {
+      'link': 'https://www.shiyui.dev/',
+      'iconPath': 'assets/user-solid.svg',
+    },
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisSize: MainAxisSize.min,
-      children: [
-        LinkIcon(
-          link: 'https://twitter.com/',
-          iconPath: 'assets/twitter.svg',
+      children: links.map((link) => Padding(
+        padding: const EdgeInsets.only(right: 16),
+        child: LinkIcon(
+          link: link['link']!,
+          iconPath: link['iconPath']!,
         ),
-        const SizedBox(width: 16),
-        LinkIcon(
-          link: 'https://github.com/Sigumaa',
-          iconPath: 'assets/github.svg',
-        ),
-        const SizedBox(width: 16),
-        LinkIcon(
-          link: 'https://www.shiyui.dev/',
-          iconPath: 'assets/user-solid.svg',
-        ),
-      ],
+      )).toList(),
     );
   }
 }
