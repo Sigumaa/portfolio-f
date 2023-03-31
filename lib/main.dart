@@ -106,23 +106,36 @@ class SkillSet extends StatelessWidget {
 class LinkIcon extends StatelessWidget {
   final String link;
   final String iconPath;
+  final String linkName;
 
-  const LinkIcon({Key? key, required this.link, required this.iconPath}) : super(key: key);
+  const LinkIcon({
+    Key? key,
+    required this.link,
+    required this.iconPath,
+    required this.linkName,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        launchUrlString(link);
-      },
-      child: SvgPicture.asset(
-        iconPath,
-        colorFilter: ColorFilter.mode(
-          const Color(0xff506482),
-          BlendMode.srcIn,
+    return Tooltip(
+      message: linkName,
+      decoration: const BoxDecoration(
+        color: Color(0xff506482),
+        borderRadius: BorderRadius.all(Radius.circular(4)),
+      ),
+      child: GestureDetector(
+        onTap: () {
+          launchUrlString(link);
+        },
+        child: SvgPicture.asset(
+          iconPath,
+          colorFilter: const ColorFilter.mode(
+            Color(0xff506482),
+            BlendMode.srcIn,
+          ),
+          width: 32,
+          height: 32,
         ),
-        width: 32,
-        height: 32,
       ),
     );
   }
@@ -131,22 +144,27 @@ class LinkIcon extends StatelessWidget {
 class LinkIconsRow extends StatelessWidget {
   final List<Map<String,String>> links = [
     {
+      'linkName': 'Twitter',
       'link': 'https://twitter.com/shiii_i_',
       'iconPath': 'assets/twitter.svg',
     },
     {
+      'linkName': 'GitHub',
       'link': 'https://github.com/Sigumaa',
       'iconPath': 'assets/github.svg',
     },
     {
+      'linkName': 'Blog',
       'link': 'https://www.shiyui.dev/',
       'iconPath': 'assets/user-solid.svg',
     },
     {
+      'linkName': 'Last.fm',
       'link': 'https://www.last.fm/ja/user/shiyui',
       'iconPath': 'assets/square-lastfm.svg',
     },
     {
+      'linkName': 'Discord',
       'link': 'https://discord.com/users/688227388907323472',
       'iconPath': 'assets/discord.svg',
     }
@@ -159,6 +177,7 @@ class LinkIconsRow extends StatelessWidget {
       children: links.map((link) => Padding(
         padding: const EdgeInsets.only(left: 4),
         child: LinkIcon(
+          linkName: link['linkName']!,
           link: link['link']!,
           iconPath: link['iconPath']!,
         ),
