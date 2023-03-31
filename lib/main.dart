@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 void main() {
+  setUrlStrategy(PathUrlStrategy());
   runApp(
     const PortfolioApp(),
   );
