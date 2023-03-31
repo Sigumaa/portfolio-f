@@ -129,7 +129,7 @@ class LinkIcon extends StatelessWidget {
 class LinkIconsRow extends StatelessWidget {
   final List<Map<String,String>> links = [
     {
-      'link': 'https://twitter.com/',
+      'link': 'https://twitter.com/shiii_i_',
       'iconPath': 'assets/twitter.svg',
     },
     {
@@ -140,6 +140,14 @@ class LinkIconsRow extends StatelessWidget {
       'link': 'https://www.shiyui.dev/',
       'iconPath': 'assets/user-solid.svg',
     },
+    {
+      'link': 'https://www.last.fm/ja/user/shiyui',
+      'iconPath': 'assets/square-lastfm.svg',
+    },
+    {
+      'link': 'https://discord.com/users/688227388907323472',
+      'iconPath': 'assets/discord.svg',
+    }
   ];
 
   @override
@@ -147,7 +155,7 @@ class LinkIconsRow extends StatelessWidget {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: links.map((link) => Padding(
-        padding: const EdgeInsets.only(right: 16),
+        padding: const EdgeInsets.only(left: 4),
         child: LinkIcon(
           link: link['link']!,
           iconPath: link['iconPath']!,
