@@ -15,10 +15,19 @@ class PortfolioApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    const Color color = Color(0xff506482);
+    return MaterialApp(
       title: 'しゆいのポートフォリオ',
       home: HomePage(),
+      theme: ThemeData(
+        textTheme: TextTheme(
+          headlineMedium: TextStyle(color: color),
+          bodyMedium: TextStyle(color: color),
+          titleLarge: TextStyle(color: color),
+        ),
+      ),
     );
+
   }
 }
 
@@ -38,11 +47,11 @@ class HomePage extends StatelessWidget {
               ProfileImage(),
               Text(
                 'しゆい',
-                style: Theme.of(context).textTheme.headlineSmall,
+                style: Theme.of(context).textTheme.headlineMedium,
               ),
               Text(
                 'Student, Go Lover',
-                style: Theme.of(context).textTheme.titleMedium,
+                style: Theme.of(context).textTheme.bodyMedium,
               ),
               SizedBox(
                 height: 32,
@@ -97,7 +106,10 @@ class SkillSet extends StatelessWidget {
         ),
         const SizedBox(height: 8),
         Column(
-          children: skills.map((skill) => Text(skill)).toList()),
+          children: skills.map((skill) => Text(
+              skill,
+              style: Theme.of(context).textTheme.bodyMedium,
+          )).toList()),
       ],
     );
   }
@@ -155,7 +167,7 @@ class LinkIconsRow extends StatelessWidget {
     },
     {
       'linkName': 'Blog',
-      'link': 'https://www.shiyui.dev/',
+      'link': 'https://www.shiyui.dev/blog',
       'iconPath': 'assets/user-solid.svg',
     },
     {
